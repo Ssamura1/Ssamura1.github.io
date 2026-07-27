@@ -2,13 +2,13 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🌌 Космическая Империя — Полная версия</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💅 KIRA NAILS — Студия маникюра</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* ============================================================
-           БАЗА
+           БАЗА + ПЕРЕМЕННЫЕ + RESET
            ============================================================ */
         * {
             margin: 0;
@@ -17,111 +17,69 @@
         }
 
         :root {
-            --bg: #07080e;
-            --bg2: #0d0f1a;
-            --card: #13162b;
-            --card-hover: #1a1e3a;
-            --text: #ffffff;
-            --text2: rgba(255, 255, 255, 0.6);
-            --text3: rgba(255, 255, 255, 0.3);
-            --accent1: #6c5ce7;
-            --accent2: #00d2ff;
-            --accent3: #ff6b6b;
-            --accent4: #f0c040;
-            --radius: 20px;
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --primary: #c9386e;
+            --primary-light: #e8709a;
+            --primary-dark: #a82e5a;
+            --primary-bg: #fcf1f5;
+            --secondary: #fce4ed;
+            --accent: #f5b8c9;
+            --text: #2d1b24;
+            --text-light: #7a5a66;
+            --white: #ffffff;
+            --gold: #d4a373;
+            --shadow: 0 20px 60px rgba(201, 56, 110, 0.12);
+            --shadow-lg: 0 30px 80px rgba(201, 56, 110, 0.15);
+            --radius: 24px;
+            --radius-sm: 14px;
+            --transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
         }
 
-        [data-theme="light"] {
-            --bg: #f0f2f8;
-            --bg2: #e4e8f0;
-            --card: #ffffff;
-            --card-hover: #f5f7ff;
-            --text: #0a0a1a;
-            --text2: rgba(0, 0, 0, 0.6);
-            --text3: rgba(0, 0, 0, 0.3);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
+            font-family: var(--font-sans);
+            background: var(--primary-bg);
             color: var(--text);
             overflow-x: hidden;
             line-height: 1.6;
-            transition: background 0.4s ease, color 0.4s ease;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--primary-bg); }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--accent1), var(--accent2));
+            background: linear-gradient(180deg, var(--primary), var(--primary-light));
             border-radius: 10px;
         }
 
         /* ============================================================
-           ТОСТ-УВЕДОМЛЕНИЯ
+           ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ
            ============================================================ */
-        .toast-container {
+        .deco-flower {
             position: fixed;
-            top: 80px;
-            right: 20px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-width: 350px;
+            font-size: 200px;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatFlower 25s ease-in-out infinite alternate;
         }
+        .deco-flower:nth-child(1) { top: 10%; left: -5%; animation-delay: 0s; }
+        .deco-flower:nth-child(2) { bottom: 5%; right: -8%; animation-delay: 8s; font-size: 150px; }
+        .deco-flower:nth-child(3) { top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 300px; opacity: 0.02; animation-delay: 4s; }
 
-        .toast {
-            padding: 14px 20px;
-            border-radius: 12px;
-            background: var(--card);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: var(--shadow);
-            animation: slideInRight 0.4s ease;
-            color: var(--text);
-            font-size: 14px;
-        }
-
-        .toast.success {
-            border-left: 4px solid #4aba4a;
-        }
-        .toast.error {
-            border-left: 4px solid var(--accent3);
-        }
-        .toast.info {
-            border-left: 4px solid var(--accent2);
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        @keyframes floatFlower {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            50% { transform: translate(20px, -20px) rotate(5deg) scale(1.05); }
+            100% { transform: translate(-10px, 30px) rotate(-3deg) scale(0.95); }
         }
 
         /* ============================================================
@@ -133,17 +91,13 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 12px 0;
-            background: rgba(7, 8, 14, 0.9);
+            padding: 16px 0;
+            background: rgba(255, 243, 247, 0.92);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(201, 56, 110, 0.06);
             transition: all 0.4s ease;
         }
-
-        [data-theme="light"] nav {
-            background: rgba(240, 242, 248, 0.9);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
+        nav.scrolled { box-shadow: 0 10px 40px rgba(201, 56, 110, 0.08); }
 
         .nav-inner {
             display: flex;
@@ -154,96 +108,70 @@
         }
 
         .logo {
-            font-family: 'Orbitron', monospace;
-            font-size: 20px;
+            font-family: var(--font-serif);
+            font-size: 28px;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 2px;
+            color: var(--primary);
+            letter-spacing: 1px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
+        .logo span { color: var(--text); }
+        .logo .dot { color: var(--gold); font-size: 32px; }
 
         .nav-links {
             display: flex;
-            gap: 16px;
+            gap: 32px;
             list-style: none;
             align-items: center;
             flex-wrap: wrap;
         }
-
         .nav-links a {
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 600;
-            color: var(--text2);
+            color: var(--text-light);
             transition: all 0.3s ease;
             position: relative;
-            padding: 4px 0;
         }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        [data-theme="light"] .nav-links a:hover {
-            color: var(--text);
-        }
-
+        .nav-links a:hover { color: var(--primary); }
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: -4px;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            background: var(--primary);
             transition: width 0.3s ease;
         }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .nav-actions button {
-            padding: 6px 16px;
-            border-radius: 50px;
-            border: none;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(108, 92, 231, 0.15);
-            color: var(--accent1);
-        }
-
-        .nav-actions button:hover {
-            background: rgba(108, 92, 231, 0.3);
-            transform: scale(1.02);
-        }
-
-        .nav-actions .btn-primary-small {
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
-            color: #fff;
-        }
-
-        .nav-actions .btn-primary-small:hover {
-            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
-        }
+        .nav-links a:hover::after { width: 100%; }
 
         .nav-toggle {
             display: none;
             background: none;
             border: none;
             color: var(--text);
-            font-size: 24px;
+            font-size: 26px;
             cursor: pointer;
+        }
+
+        .btn-nav {
+            padding: 10px 28px;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(201, 56, 110, 0.25);
+        }
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(201, 56, 110, 0.35);
         }
 
         /* ============================================================
@@ -257,44 +185,14 @@
             overflow: hidden;
             padding-top: 80px;
         }
-
         .hero-bg {
             position: absolute;
             inset: 0;
             z-index: 0;
             background:
-                radial-gradient(ellipse at 20% 30%, rgba(108, 92, 231, 0.12) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 70%, rgba(0, 210, 255, 0.08) 0%, transparent 50%);
+                radial-gradient(ellipse at 70% 20%, rgba(201, 56, 110, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(201, 56, 110, 0.04) 0%, transparent 40%);
         }
-
-        .stars-layer {
-            position: absolute;
-            inset: 0;
-            background-image:
-                radial-gradient(1px 1px at 5% 10%, #fff, transparent),
-                radial-gradient(1px 1px at 15% 80%, #fff, transparent),
-                radial-gradient(1.5px 1.5px at 25% 30%, #fff, transparent),
-                radial-gradient(1px 1px at 35% 90%, #fff, transparent),
-                radial-gradient(1px 1px at 45% 20%, #fff, transparent),
-                radial-gradient(1.5px 1.5px at 55% 70%, #fff, transparent),
-                radial-gradient(1px 1px at 65% 15%, #fff, transparent),
-                radial-gradient(1px 1px at 75% 85%, #fff, transparent),
-                radial-gradient(1.5px 1.5px at 85% 40%, #fff, transparent),
-                radial-gradient(1px 1px at 95% 60%, #fff, transparent);
-            background-size: 100% 100%;
-            opacity: 0.3;
-            animation: twinkle 5s ease-in-out infinite alternate;
-        }
-
-        @keyframes twinkle {
-            0% {
-                opacity: 0.2;
-            }
-            100% {
-                opacity: 0.6;
-            }
-        }
-
         .hero-content {
             position: relative;
             z-index: 1;
@@ -304,38 +202,62 @@
             align-items: center;
         }
 
+        .hero-text .badge {
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 50px;
+            background: rgba(201, 56, 110, 0.08);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
         .hero-text h1 {
-            font-size: 60px;
+            font-family: var(--font-serif);
+            font-size: 58px;
             font-weight: 900;
-            line-height: 1.05;
-            margin-bottom: 20px;
-            font-family: 'Orbitron', monospace;
+            line-height: 1.08;
+            margin-bottom: 16px;
         }
-
-        .hero-text h1 .glow {
-            background: linear-gradient(135deg, var(--accent1), var(--accent2), var(--accent1));
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glowShift 4s ease-in-out infinite;
+        .hero-text h1 span {
+            color: var(--primary);
+            position: relative;
         }
-
-        @keyframes glowShift {
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
+        .hero-text h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: rgba(201, 56, 110, 0.12);
+            border-radius: 10px;
         }
-
         .hero-text p {
             font-size: 18px;
-            color: var(--text2);
+            color: var(--text-light);
             max-width: 480px;
             margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+        .hero-stats .stat .number {
+            font-family: var(--font-serif);
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--primary);
+        }
+        .hero-stats .stat .label {
+            font-size: 13px;
+            color: var(--text-light);
         }
 
         .hero-buttons {
@@ -345,778 +267,513 @@
         }
 
         .btn {
-            padding: 14px 34px;
+            padding: 16px 38px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 15px;
             border: none;
             cursor: pointer;
             transition: all 0.4s ease;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
-
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: #fff;
-            box-shadow: 0 10px 40px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 10px 40px rgba(201, 56, 110, 0.25);
         }
-
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 60px rgba(108, 92, 231, 0.5);
+            box-shadow: 0 20px 60px rgba(201, 56, 110, 0.35);
         }
-
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        [data-theme="light"] .btn-secondary {
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: var(--white);
             color: var(--text);
+            border: 2px solid rgba(201, 56, 110, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
         }
-
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
             transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(201, 56, 110, 0.08);
         }
 
-        .hero-orb {
-            width: 350px;
-            height: 350px;
+        .hero-circle {
+            width: 420px;
+            height: 420px;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(108, 92, 231, 0.3), rgba(0, 210, 255, 0.1));
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: linear-gradient(135deg, rgba(201, 56, 110, 0.08), rgba(201, 56, 110, 0.02));
+            border: 2px solid rgba(201, 56, 110, 0.06);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 140px;
             position: relative;
             animation: float 6s ease-in-out infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 100px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            user-select: none;
-            margin: 0 auto;
+            box-shadow: 0 40px 100px rgba(201, 56, 110, 0.06);
         }
-
-        .hero-orb:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 80px rgba(108, 92, 231, 0.2);
+        .hero-circle .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 56, 110, 0.04);
+            animation: ringPulse 4s ease-in-out infinite;
         }
+        .hero-circle .ring:nth-child(1) { inset: -20px; animation-delay: 0s; }
+        .hero-circle .ring:nth-child(2) { inset: -40px; animation-delay: 1.5s; border-color: rgba(201, 56, 110, 0.03); }
+        .hero-circle .ring:nth-child(3) { inset: -60px; animation-delay: 3s; border-color: rgba(201, 56, 110, 0.02); }
 
         @keyframes float {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes ringPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.03); opacity: 0.1; }
         }
 
         /* ============================================================
-           ВКЛАДКИ (TABS)
+           СЕКЦИИ (ОБЩЕЕ)
            ============================================================ */
-        .tabs-container {
-            margin-top: 48px;
-        }
-
-        .tabs-nav {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            scrollbar-width: none;
-        }
-
-        .tabs-nav::-webkit-scrollbar {
-            display: none;
-        }
-
-        .tab-btn {
-            padding: 10px 24px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            background: var(--card);
-            color: var(--text2);
-            font-size: 13px;
+        .section-padding { padding: 80px 0; }
+        .section-label {
+            font-size: 12px;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .tab-btn:hover {
-            background: var(--card-hover);
-            color: var(--text);
-        }
-
-        .tab-btn.active {
-            background: rgba(108, 92, 231, 0.15);
-            border-color: rgba(108, 92, 231, 0.3);
-            color: var(--accent1);
-        }
-
-        .tab-content {
-            display: none;
-            padding: 24px 0;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ============================================================
-           МОДАЛЬНЫЕ ОКНА
-           ============================================================ */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal-overlay.open {
-            display: flex;
-        }
-
-        .modal {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 40px 32px;
-            max-width: 440px;
-            width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            box-shadow: var(--shadow);
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal h2 {
-            font-size: 24px;
-            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--primary);
             margin-bottom: 8px;
-            font-family: 'Orbitron', monospace;
         }
-
-        .modal p {
-            color: var(--text2);
-            font-size: 14px;
-            margin-bottom: 24px;
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 12px;
         }
-
-        .modal label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .modal input {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(0, 0, 0, 0.3);
-            color: #fff;
-            font-size: 14px;
-            margin-bottom: 16px;
-            transition: border 0.3s ease;
-        }
-
-        .modal input:focus {
-            outline: none;
-            border-color: rgba(108, 92, 231, 0.3);
-        }
-
-        [data-theme="light"] .modal input {
-            background: rgba(0, 0, 0, 0.04);
-            color: var(--text);
-        }
-
-        .modal .btn-full {
-            width: 100%;
-            padding: 14px;
-            border-radius: 10px;
-            border: none;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .modal .modal-close {
-            float: right;
-            background: none;
-            border: none;
-            color: var(--text2);
-            font-size: 24px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .modal .modal-close:hover {
-            color: #fff;
-            transform: rotate(90deg);
+        .section-title span { color: var(--primary); }
+        .section-desc {
+            font-size: 17px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.8;
         }
 
         /* ============================================================
-           АДМИН-ПАНЕЛЬ
+           УСЛУГИ
            ============================================================ */
-        .admin-panel {
-            background: var(--card);
-            border-radius: var(--radius);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 32px;
-            margin-top: 24px;
-        }
-
-        .admin-stats {
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
+            gap: 24px;
         }
-
-        .admin-stat {
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .admin-stat .num {
-            font-size: 28px;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .admin-stat .label {
-            font-size: 12px;
-            color: var(--text2);
-        }
-
-        .admin-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-
-        .admin-table th {
-            text-align: left;
-            padding: 10px 12px;
-            color: var(--text2);
-            font-weight: 600;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .admin-table td {
-            padding: 10px 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-        }
-
-        .admin-table .status {
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .admin-table .status.active {
-            background: rgba(74, 186, 74, 0.15);
-            color: #4aba4a;
-        }
-
-        .admin-table .status.banned {
-            background: rgba(255, 107, 107, 0.15);
-            color: #ff6b6b;
-        }
-
-        .admin-table .actions button {
-            padding: 4px 12px;
-            border-radius: 50px;
-            border: none;
-            font-size: 11px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(108, 92, 231, 0.1);
-            color: var(--accent1);
-            margin-right: 4px;
-        }
-
-        .admin-table .actions button:hover {
-            background: rgba(108, 92, 231, 0.2);
-        }
-
-        .admin-table .actions button.danger {
-            background: rgba(255, 107, 107, 0.1);
-            color: #ff6b6b;
-        }
-
-        .admin-table .actions button.danger:hover {
-            background: rgba(255, 107, 107, 0.2);
-        }
-
-        /* ============================================================
-           ПРОФИЛЬ
-           ============================================================ */
-        .profile-card {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            background: var(--card);
+        .service-card {
+            background: var(--white);
             border-radius: var(--radius);
-            padding: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            flex-wrap: wrap;
+            padding: 32px 28px;
+            border: 1px solid rgba(201, 56, 110, 0.04);
+            transition: all var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
         }
-
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light), var(--gold));
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+        .service-card:hover::before { opacity: 1; }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(201, 56, 110, 0.08);
+        }
+        .service-card.selected {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(201, 56, 110, 0.06), var(--shadow-lg);
+        }
+        .service-card .icon { font-size: 36px; margin-bottom: 12px; display: block; }
+        .service-card .name { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+        .service-card .price {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary);
+            margin: 6px 0;
+        }
+        .service-card .price small { font-size: 14px; font-weight: 400; color: var(--text-light); }
+        .service-card .time {
+            font-size: 13px;
+            color: var(--text-light);
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 44px;
-            flex-shrink: 0;
+            gap: 6px;
         }
-
-        .profile-info h3 {
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .profile-info p {
-            color: var(--text2);
-            font-size: 14px;
-        }
-
-        .profile-info .badge {
+        .service-card .badge {
             display: inline-block;
-            padding: 4px 14px;
+            padding: 2px 14px;
             border-radius: 50px;
-            background: rgba(108, 92, 231, 0.15);
-            color: var(--accent1);
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
+            background: rgba(201, 56, 110, 0.06);
+            color: var(--primary);
             margin-top: 8px;
         }
+        .service-card .check {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid rgba(201, 56, 110, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 13px;
+            color: transparent;
+        }
+        .service-card.selected .check {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(201, 56, 110, 0.25);
+        }
 
-        /* ============================================================
-           ИИ-ФИЧИ
-           ============================================================ */
-        .ai-grid {
+        /* Дополнительные услуги */
+        .extra-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 24px;
+            gap: 12px;
+        }
+        .extra-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(201, 56, 110, 0.04);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+        }
+        .extra-item:hover { border-color: rgba(201, 56, 110, 0.12); }
+        .extra-item.selected {
+            border-color: var(--primary);
+            background: rgba(201, 56, 110, 0.02);
+        }
+        .extra-item .extra-icon { font-size: 20px; }
+        .extra-item .extra-info { flex: 1; }
+        .extra-item .extra-info .extra-name { font-size: 14px; font-weight: 600; }
+        .extra-item .extra-info .extra-price {
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .extra-item .extra-controls {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .extra-item .extra-controls button {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 56, 110, 0.08);
+            background: var(--white);
+            color: var(--text);
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .extra-item .extra-controls button:hover {
+            background: rgba(201, 56, 110, 0.04);
+            border-color: var(--primary);
+        }
+        .extra-item .extra-controls .count {
+            font-weight: 700;
+            min-width: 20px;
+            text-align: center;
+            font-size: 14px;
         }
 
-        .ai-card {
-            background: var(--card);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+        /* ============================================================
+           КАЛЬКУЛЯТОР
+           ============================================================ */
+        .calculator-wrap {
+            background: var(--white);
             border-radius: var(--radius);
-            padding: 28px 24px;
-            transition: all var(--transition);
+            padding: 48px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(201, 56, 110, 0.04);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        .calc-left .selected-list { list-style: none; padding: 0; }
+        .calc-left .selected-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(201, 56, 110, 0.04);
+            font-size: 15px;
+        }
+        .calc-left .selected-list li .remove {
+            color: #ff6b6b;
+            cursor: pointer;
+            font-weight: 700;
+            background: none;
+            border: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .calc-left .selected-list li .remove:hover { transform: scale(1.2); }
+        .calc-left .empty-message {
+            color: var(--text-light);
+            font-size: 15px;
+            text-align: center;
+            padding: 30px 0;
+            background: rgba(201, 56, 110, 0.02);
+            border-radius: var(--radius-sm);
+        }
+        .calc-right {
+            background: linear-gradient(135deg, var(--primary-bg), var(--secondary));
+            border-radius: var(--radius);
+            padding: 36px 32px;
+            border: 1px solid rgba(201, 56, 110, 0.04);
+            position: sticky;
+            top: 100px;
+        }
+        .calc-right .total-price {
+            font-family: var(--font-serif);
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--primary);
+        }
+        .calc-right .total-price small {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+        .calc-right .total-time {
+            font-size: 18px;
+            color: var(--text-light);
+            margin: 8px 0 20px;
+        }
+        .calc-right .total-time strong { color: var(--text); }
+        .calc-right .btn-book {
+            width: 100%;
+            padding: 18px;
+            border-radius: var(--radius-sm);
+            border: none;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 8px;
+            box-shadow: 0 10px 40px rgba(201, 56, 110, 0.2);
+        }
+        .calc-right .btn-book:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 50px rgba(201, 56, 110, 0.3);
+        }
+
+        /* ============================================================
+           О НАС
+           ============================================================ */
+        .about-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-text .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .about-text .features .feat {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 12px 16px;
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(201, 56, 110, 0.04);
+        }
+        .about-text .features .feat .icon { font-size: 20px; }
+        .about-image .preview {
+            width: 100%;
+            max-width: 400px;
+            border-radius: var(--radius);
+            background: linear-gradient(135deg, rgba(201, 56, 110, 0.04), rgba(201, 56, 110, 0.01));
+            border: 2px solid rgba(201, 56, 110, 0.04);
+            padding: 50px;
+            text-align: center;
+            font-size: 140px;
             position: relative;
-            overflow: hidden;
         }
-
-        .ai-card:hover {
-            transform: translateY(-4px);
-            background: var(--card-hover);
-            border-color: rgba(108, 92, 231, 0.15);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .ai-card .icon {
-            font-size: 36px;
-            margin-bottom: 12px;
+        .about-image .preview .label {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-top: 12px;
             display: block;
         }
 
-        .ai-card h3 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .ai-card p {
-            color: var(--text2);
-            font-size: 13px;
-            margin-bottom: 12px;
-        }
-
-        .ai-card .ai-btn {
-            padding: 6px 18px;
-            border-radius: 50px;
-            border: none;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(108, 92, 231, 0.15);
-            color: var(--accent1);
-            font-family: 'Inter', sans-serif;
-        }
-
-        .ai-card .ai-btn:hover {
-            background: rgba(108, 92, 231, 0.3);
-        }
-
-        .ai-card .ai-output {
-            margin-top: 10px;
-            padding: 10px 14px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            font-size: 13px;
-            color: var(--text2);
-            min-height: 36px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transition: all 0.3s ease;
-        }
-
-        .ai-card .ai-output.active {
-            border-color: rgba(108, 92, 231, 0.2);
-            color: #fff;
-        }
-
-        .ai-card .ai-input {
-            width: 100%;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(0, 0, 0, 0.3);
-            color: #fff;
-            font-size: 13px;
-            margin-bottom: 8px;
-            transition: border 0.3s ease;
-        }
-
-        .ai-card .ai-input:focus {
-            outline: none;
-            border-color: rgba(108, 92, 231, 0.3);
-        }
-
         /* ============================================================
-           ЧАТ
+           КОНТАКТЫ
            ============================================================ */
-        .chat-container {
-            background: var(--card);
-            border-radius: var(--radius);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            overflow: hidden;
-            margin-top: 24px;
-        }
-
-        .chat-messages {
-            padding: 20px;
-            max-height: 280px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .chat-msg {
-            padding: 10px 16px;
-            border-radius: 12px;
-            max-width: 80%;
-            font-size: 14px;
-            animation: msgIn 0.3s ease;
-        }
-
-        @keyframes msgIn {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .chat-msg.user {
-            background: rgba(108, 92, 231, 0.15);
-            border: 1px solid rgba(108, 92, 231, 0.1);
-            align-self: flex-end;
-        }
-
-        .chat-msg.bot {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            align-self: flex-start;
-        }
-
-        .chat-msg .typing {
-            display: inline-block;
-            animation: typing 1.2s ease-in-out infinite;
-        }
-
-        @keyframes typing {
-            0%,
-            100% {
-                opacity: 0.3;
-            }
-            50% {
-                opacity: 1;
-            }
-        }
-
-        .chat-input-area {
-            display: flex;
-            padding: 12px 20px;
-            gap: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .chat-input-area input {
-            flex: 1;
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(0, 0, 0, 0.3);
-            color: #fff;
-            font-size: 14px;
-            transition: border 0.3s ease;
-        }
-
-        .chat-input-area input:focus {
-            outline: none;
-            border-color: rgba(108, 92, 231, 0.3);
-        }
-
-        .chat-input-area button {
-            padding: 10px 20px;
-            border-radius: 10px;
-            border: none;
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
-            color: #fff;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .chat-input-area button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
-        }
-
-        /* ============================================================
-           ИГРА
-           ============================================================ */
-        .game-container {
-            background: var(--card);
-            border-radius: var(--radius);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 28px;
-            margin-top: 24px;
-        }
-
-        .game-question {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .game-options {
+        .contacts-wrap {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 50px;
         }
-
-        .game-options button {
-            padding: 12px 16px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(255, 255, 255, 0.02);
-            color: #fff;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .game-options button:hover {
-            background: rgba(108, 92, 231, 0.1);
-            border-color: rgba(108, 92, 231, 0.2);
-        }
-
-        .game-options button.correct {
-            background: rgba(74, 186, 74, 0.2);
-            border-color: #4aba4a;
-        }
-
-        .game-options button.wrong {
-            background: rgba(186, 74, 74, 0.2);
-            border-color: #ba4a4a;
-        }
-
-        .game-score {
-            margin-top: 14px;
-            text-align: center;
-            color: var(--text2);
-            font-size: 14px;
-        }
-
-        /* ============================================================
-           СТАТИСТИКА
-           ============================================================ */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: 24px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 28px 16px;
-            background: var(--card);
-            border-radius: var(--radius);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transition: all var(--transition);
-        }
-
-        .stat-item:hover {
-            transform: translateY(-4px);
-            border-color: rgba(108, 92, 231, 0.1);
-        }
-
-        .stat-number {
-            font-size: 40px;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-family: 'Orbitron', monospace;
-        }
-
-        .stat-label {
-            font-size: 13px;
-            color: var(--text2);
-            margin-top: 4px;
-        }
-
-        /* ============================================================
-           МУЗЫКА
-           ============================================================ */
-        .music-player {
+        .contacts-info .contact-item {
             display: flex;
-            gap: 14px;
             align-items: center;
-            padding: 16px 20px;
-            background: var(--card);
-            border-radius: var(--radius);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(201, 56, 110, 0.04);
+        }
+        .contacts-info .contact-item .icon {
+            font-size: 22px;
+            width: 44px;
+            text-align: center;
+        }
+        .contacts-info .contact-item .info strong {
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .contacts-info .contact-item .info a {
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        .contacts-info .contact-item .info a:hover { color: var(--primary-dark); }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
             margin-top: 24px;
             flex-wrap: wrap;
         }
-
-        .music-player .track-info {
-            flex: 1;
-            min-width: 120px;
-        }
-
-        .music-player .track-info h4 {
-            font-size: 15px;
-            font-weight: 700;
-        }
-
-        .music-player .track-info p {
-            font-size: 12px;
-            color: var(--text2);
-        }
-
-        .music-player .progress {
-            flex: 1;
-            min-width: 80px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 4px;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .music-player .progress .fill {
-            width: 30%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
-            border-radius: 4px;
-            transition: width 0.1s ease;
-        }
-
-        .music-player .controls {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .music-player .controls button {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(255, 255, 255, 0.02);
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
+        .social-links a {
+            padding: 12px 24px;
+            border-radius: 50px;
+            background: var(--white);
+            color: var(--text);
+            font-weight: 600;
+            font-size: 14px;
             transition: all 0.3s ease;
+            border: 1px solid rgba(201, 56, 110, 0.04);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+        }
+        .social-links a:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 56, 110, 0.15);
         }
 
-        .music-player .controls button:hover {
-            background: rgba(108, 92, 231, 0.15);
-            border-color: rgba(108, 92, 231, 0.2);
+        .map-container {
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 2px solid rgba(201, 56, 110, 0.04);
+            height: 320px;
+            width: 100%;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* ============================================================
-           ТЕМА
+           CTA
            ============================================================ */
-        .theme-toggle {
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 20px;
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+        .cta-wrap {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius);
+            padding: 60px 50px;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
         }
-
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.05);
+        .cta-wrap .deco {
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+        .cta-wrap .deco:nth-child(1) { top: -40px; right: -40px; }
+        .cta-wrap .deco:nth-child(2) { bottom: -60px; left: -60px; font-size: 150px; }
+        .cta-wrap h2 {
+            font-family: var(--font-serif);
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+        .cta-wrap p {
+            font-size: 17px;
+            opacity: 0.8;
+            max-width: 500px;
+            margin: 0 auto 28px;
+        }
+        .cta-wrap .btn-white {
+            padding: 16px 44px;
+            border-radius: 50px;
+            border: none;
+            background: #fff;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        .cta-wrap .btn-white:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        .cta-wrap .btn-outline-white {
+            padding: 16px 44px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-left: 12px;
+        }
+        .cta-wrap .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
         }
 
         /* ============================================================
@@ -1124,104 +781,100 @@
            ============================================================ */
         footer {
             padding: 50px 0 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            margin-top: 40px;
+            border-top: 2px solid rgba(201, 56, 110, 0.04);
+            margin-top: 20px;
         }
-
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 30px;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
             margin-bottom: 30px;
         }
-
         .footer-brand h3 {
-            font-family: 'Orbitron', monospace;
-            font-size: 20px;
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
+            font-family: var(--font-serif);
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 8px;
         }
-
         .footer-brand p {
-            color: var(--text2);
-            font-size: 13px;
-            max-width: 280px;
+            color: var(--text-light);
+            font-size: 14px;
+            max-width: 300px;
         }
-
         .footer-col h4 {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--text3);
+            color: var(--text-light);
             margin-bottom: 12px;
         }
-
         .footer-col a {
             display: block;
-            color: var(--text2);
-            font-size: 13px;
-            padding: 3px 0;
+            color: var(--text-light);
+            font-size: 14px;
+            padding: 4px 0;
             transition: color 0.3s ease;
         }
-
-        .footer-col a:hover {
-            color: #fff;
-        }
-
-        [data-theme="light"] .footer-col a:hover {
-            color: var(--text);
-        }
-
+        .footer-col a:hover { color: var(--primary); }
         .footer-bottom {
             text-align: center;
             padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            color: var(--text3);
+            border-top: 1px solid rgba(201, 56, 110, 0.04);
+            color: var(--text-light);
             font-size: 13px;
+        }
+
+        /* ============================================================
+           ТОСТЫ
+           ============================================================ */
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 360px;
+        }
+        .toast {
+            padding: 16px 22px;
+            border-radius: var(--radius-sm);
+            background: var(--white);
+            border: 1px solid rgba(201, 56, 110, 0.04);
+            box-shadow: var(--shadow-lg);
+            animation: slideUp 0.4s ease;
+            color: var(--text);
+            font-size: 14px;
+            border-left: 4px solid var(--primary);
+        }
+        .toast.success { border-left-color: #4aba4a; }
+        .toast.error { border-left-color: #ff6b6b; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ============================================================
            АДАПТИВ
            ============================================================ */
         @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-text p {
-                margin: 0 auto 28px;
-            }
-            .hero-buttons {
-                justify-content: center;
-            }
-            .hero-orb {
-                width: 260px;
-                height: 260px;
-                font-size: 72px;
-            }
-            .hero-text h1 {
-                font-size: 42px;
-            }
-            .ai-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .admin-stats {
-                grid-template-columns: 1fr 1fr;
-            }
-            .profile-card {
-                flex-direction: column;
-                text-align: center;
-            }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text p { margin: 0 auto 28px; }
+            .hero-stats { justify-content: center; }
+            .hero-buttons { justify-content: center; }
+            .hero-circle { width: 280px; height: 280px; font-size: 90px; }
+            .hero-text h1 { font-size: 40px; }
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .extra-grid { grid-template-columns: 1fr 1fr; }
+            .calculator-wrap { grid-template-columns: 1fr; padding: 32px; }
+            .calc-right { position: static; }
+            .about-wrap { grid-template-columns: 1fr; text-align: center; }
+            .about-text .features { justify-content: center; }
+            .contacts-wrap { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 640px) {
@@ -1229,124 +882,69 @@
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 60px;
-                left: 12px;
-                right: 12px;
-                background: var(--card);
-                border-radius: 16px;
-                padding: 16px 20px;
-                gap: 10px;
-                border: 1px solid rgba(255, 255, 255, 0.04);
-                box-shadow: var(--shadow);
+                top: 68px;
+                left: 16px;
+                right: 16px;
+                background: var(--white);
+                border-radius: var(--radius-sm);
+                padding: 20px;
+                gap: 12px;
+                box-shadow: var(--shadow-lg);
+                border: 1px solid rgba(201, 56, 110, 0.04);
             }
-            .nav-links.open {
-                display: flex;
-            }
-            .nav-toggle {
-                display: block;
-            }
-            .nav-actions .hide-mobile {
-                display: none;
-            }
-            .hero-text h1 {
-                font-size: 30px;
-            }
-            .ai-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            .admin-stats {
-                grid-template-columns: 1fr;
-            }
-            .game-options {
-                grid-template-columns: 1fr;
-            }
-            .chat-msg {
-                max-width: 95%;
-            }
-            .modal {
-                padding: 24px 18px;
-            }
-            .tabs-nav {
-                gap: 4px;
-            }
-            .tab-btn {
-                padding: 8px 14px;
-                font-size: 12px;
-            }
-            .admin-table {
-                font-size: 11px;
-            }
-            .admin-table th,
-            .admin-table td {
-                padding: 6px 8px;
-            }
+            .nav-links.open { display: flex; }
+            .nav-toggle { display: block; }
+            .hero-text h1 { font-size: 30px; }
+            .hero-circle { width: 200px; height: 200px; font-size: 60px; }
+            .hero-stats { gap: 20px; flex-wrap: wrap; }
+            .hero-stats .stat .number { font-size: 20px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .extra-grid { grid-template-columns: 1fr; }
+            .calculator-wrap { padding: 20px; }
+            .calc-right { padding: 24px 20px; }
+            .calc-right .total-price { font-size: 34px; }
+            .about-text .features { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 30px; }
+            .map-container { height: 200px; }
+            .social-links a { padding: 8px 16px; font-size: 12px; }
+            .cta-wrap { padding: 40px 24px; }
+            .cta-wrap h2 { font-size: 28px; }
+            .btn { padding: 12px 24px; font-size: 13px; }
+            .cta-wrap .btn-white,
+            .cta-wrap .btn-outline-white { padding: 12px 28px; font-size: 14px; }
+            .deco-flower { display: none; }
+            .about-image .preview { font-size: 80px; padding: 30px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- ===== ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ ===== -->
+    <div class="deco-flower">🌸</div>
+    <div class="deco-flower">💐</div>
+    <div class="deco-flower">🌺</div>
+
     <!-- ===== ТОСТ-КОНТЕЙНЕР ===== -->
     <div class="toast-container" id="toastContainer"></div>
 
-    <!-- ===== МОДАЛ РЕГИСТРАЦИИ ===== -->
-    <div class="modal-overlay" id="registerModal">
-        <div class="modal">
-            <button class="modal-close" onclick="closeModal('registerModal')">✕</button>
-            <h2>🚀 Регистрация</h2>
-            <p>Создай аккаунт, чтобы войти в космическую империю.</p>
-            <label>Имя пользователя</label>
-            <input id="regUsername" placeholder="Введите имя" value="Космонавт">
-            <label>Email</label>
-            <input id="regEmail" placeholder="Введите email" value="cosmo@space.com">
-            <label>Пароль</label>
-            <input id="regPassword" type="password" placeholder="Введите пароль" value="123456">
-            <button class="btn-full btn-primary" onclick="register()">🌌 Зарегистрироваться</button>
-            <p style="text-align:center;margin-top:12px;font-size:13px;color:var(--text2);">
-                Уже есть аккаунт? <a href="#" onclick="event.preventDefault();closeModal('registerModal');openModal('loginModal');" style="color:var(--accent1);">Войти</a>
-            </p>
-        </div>
-    </div>
-
-    <!-- ===== МОДАЛ ВХОДА ===== -->
-    <div class="modal-overlay" id="loginModal">
-        <div class="modal">
-            <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
-            <h2>🔐 Вход</h2>
-            <p>Войди в свою космическую империю.</p>
-            <label>Имя пользователя</label>
-            <input id="loginUsername" placeholder="Введите имя" value="Космонавт">
-            <label>Пароль</label>
-            <input id="loginPassword" type="password" placeholder="Введите пароль" value="123456">
-            <button class="btn-full btn-primary" onclick="login()">🚀 Войти</button>
-            <p style="text-align:center;margin-top:12px;font-size:13px;color:var(--text2);">
-                Нет аккаунта? <a href="#" onclick="event.preventDefault();closeModal('loginModal');openModal('registerModal');" style="color:var(--accent1);">Зарегистрироваться</a>
-            </p>
-        </div>
-    </div>
-
-    <!-- ===== НАВИГАЦИЯ ===== -->
+    <!-- ============================================================
+    НАВИГАЦИЯ
+    ============================================================ -->
     <nav id="navbar">
         <div class="container nav-inner">
-            <div class="logo" onclick="scrollToTop()">✦ IMPERIUM</div>
+            <div class="logo">
+                💅 KIRA<span>NAILS</span>
+                <span class="dot">•</span>
+            </div>
             <button class="nav-toggle" id="navToggle">☰</button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Главная</a></li>
-                <li><a href="#ai">ИИ</a></li>
-                <li><a href="#chat">Чат</a></li>
-                <li><a href="#game">Игра</a></li>
-                <li><a href="#admin">Админ</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#calculator">Калькулятор</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+                <li><a href="#contacts" class="btn-nav">📅 Записаться</a></li>
             </ul>
-            <div class="nav-actions">
-                <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
-                <button class="btn-primary-small hide-mobile" onclick="openModal('registerModal')" id="authBtn">🚀 Войти</button>
-                <button class="hide-mobile" onclick="logout()" id="logoutBtn" style="display:none;background:rgba(255,107,107,0.15);color:var(--accent3);">Выйти</button>
-            </div>
         </div>
     </nav>
 
@@ -1354,188 +952,115 @@
     ГЕРОЙ
     ============================================================ -->
     <section class="hero" id="home">
-        <div class="hero-bg">
-            <div class="stars-layer"></div>
-        </div>
+        <div class="hero-bg"></div>
         <div class="container hero-content">
             <div class="hero-text">
-                <h1>Империя<br><span class="glow">Будущего</span></h1>
-                <p>Космическая платформа с искусственным интеллектом. Исследуй, управляй, твори.</p>
+                <div class="badge">✦ Премиум-студия</div>
+                <h1>Твои идеальные <span>ногти</span> в Днепре</h1>
+                <p>Профессиональный маникюр, наращивание и дизайн от мастера с душой. Сделай свои ручки красивыми уже сегодня.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="number">5+</div>
+                        <div class="label">лет опыта</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">500+</div>
+                        <div class="label">довольных клиенток</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">4.9</div>
+                        <div class="label">средняя оценка</div>
+                    </div>
+                </div>
                 <div class="hero-buttons">
-                    <a href="#ai" class="btn btn-primary">🤖 ИИ-функции</a>
-                    <a href="#chat" class="btn btn-secondary">💬 Чат</a>
-                    <a href="#game" class="btn btn-secondary">🎮 Игра</a>
+                    <a href="#calculator" class="btn btn-primary">📊 Рассчитать стоимость</a>
+                    <a href="#services" class="btn btn-secondary">📋 Все услуги</a>
                 </div>
             </div>
             <div class="hero-image">
-                <div class="hero-orb" onclick="showToast('🚀 Галактика ждёт тебя!', 'info')">🌌</div>
+                <div class="hero-circle">
+                    💅
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-    ВКЛАДКИ
+    УСЛУГИ
     ============================================================ -->
-    <section id="ai" style="padding-top:60px;">
+    <section class="section-padding" id="services" style="background:var(--white);">
         <div class="container">
-            <div class="section-label">✦ ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ</div>
-            <h2 class="section-title">10 <span class="gradient">ИИ-суперсил</span></h2>
-            <p class="section-desc">Нажми на любую кнопку — ИИ сделает магию прямо у тебя на глазах.</p>
+            <div class="section-label">✦ УСЛУГИ</div>
+            <h2 class="section-title">Выбери свой <span>идеал</span></h2>
+            <p class="section-desc">Кликни на услугу, чтобы добавить в корзину, и мы рассчитаем итоговую стоимость.</p>
 
-            <div class="tabs-container">
-                <div class="tabs-nav" id="tabsNav">
-                    <button class="tab-btn active" data-tab="tab1">🤖 ИИ-фичи</button>
-                    <button class="tab-btn" data-tab="tab2">📊 Статистика</button>
-                    <button class="tab-btn" data-tab="tab3">👤 Профиль</button>
-                    <button class="tab-btn" data-tab="tab4">🎵 Музыка</button>
-                </div>
+            <div class="services-grid" id="servicesGrid"></div>
 
-                <!-- ===== ВКЛАДКА 1: ИИ-ФИЧИ ===== -->
-                <div class="tab-content active" id="tab1">
-                    <div class="ai-grid">
-                        <!-- 1 -->
-                        <div class="ai-card">
-                            <span class="icon">🧠</span>
-                            <h3>ИИ-ассистент</h3>
-                            <p>Задай любой вопрос о космосе.</p>
-                            <button class="ai-btn" onclick="aiChat()">💬 Спросить</button>
-                            <div class="ai-output" id="aiChatOutput">Нажми, чтобы начать</div>
-                        </div>
-                        <!-- 2 -->
-                        <div class="ai-card">
-                            <span class="icon">🌟</span>
-                            <h3>Космическое имя</h3>
-                            <p>Получи уникальное имя.</p>
-                            <button class="ai-btn" onclick="aiName()">🚀 Сгенерировать</button>
-                            <div class="ai-output" id="aiNameOutput">Нажми для генерации</div>
-                        </div>
-                        <!-- 3 -->
-                        <div class="ai-card">
-                            <span class="icon">🔮</span>
-                            <h3>ИИ-астролог</h3>
-                            <p>Предскажи своё будущее.</p>
-                            <button class="ai-btn" onclick="aiAstro()">⭐ Предсказать</button>
-                            <div class="ai-output" id="aiAstroOutput">Нажми для предсказания</div>
-                        </div>
-                        <!-- 4 -->
-                        <div class="ai-card">
-                            <span class="icon">🖼️</span>
-                            <h3>ИИ-художник</h3>
-                            <p>Создай космический пейзаж.</p>
-                            <input class="ai-input" id="aiArtInput" placeholder="Описание" value="золотая галактика">
-                            <button class="ai-btn" onclick="aiArt()">🎨 Создать</button>
-                            <div class="ai-output" id="aiArtOutput">Напиши описание</div>
-                        </div>
-                        <!-- 5 -->
-                        <div class="ai-card">
-                            <span class="icon">🎵</span>
-                            <h3>ИИ-композитор</h3>
-                            <p>Сгенерируй космическую музыку.</p>
-                            <button class="ai-btn" onclick="aiMusic()">🎶 Создать трек</button>
-                            <div class="ai-output" id="aiMusicOutput">Нажми для генерации</div>
-                        </div>
-                        <!-- 6 -->
-                        <div class="ai-card">
-                            <span class="icon">🗣️</span>
-                            <h3>Голосовой ИИ</h3>
-                            <p>Скажи команду микрофону.</p>
-                            <button class="ai-btn" onclick="aiVoice()">🎤 Активировать</button>
-                            <div class="ai-output" id="aiVoiceOutput">Нажми и скажи что-то</div>
-                        </div>
-                        <!-- 7 -->
-                        <div class="ai-card">
-                            <span class="icon">📊</span>
-                            <h3>ИИ-рекомендации</h3>
-                            <p>Получи персонализированную миссию.</p>
-                            <input class="ai-input" id="aiRecInput" placeholder="Интересы" value="астрономия, технологии">
-                            <button class="ai-btn" onclick="aiRecommend()">📡 Рекомендовать</button>
-                            <div class="ai-output" id="aiRecOutput">Напиши интересы</div>
-                        </div>
-                        <!-- 8 -->
-                        <div class="ai-card">
-                            <span class="icon">📈</span>
-                            <h3>ИИ-аналитик</h3>
-                            <p>Анализ космических данных.</p>
-                            <button class="ai-btn" onclick="aiAnalyze()">📊 Анализировать</button>
-                            <div class="ai-output" id="aiAnalyzeOutput">Нажми для анализа</div>
-                        </div>
-                        <!-- 9 -->
-                        <div class="ai-card">
-                            <span class="icon">🧩</span>
-                            <h3>ИИ-викторина</h3>
-                            <p>Соревнуйся с ИИ.</p>
-                            <button class="ai-btn" onclick="aiQuiz()">❓ Начать</button>
-                            <div class="ai-output" id="aiQuizOutput">Нажми для начала</div>
-                        </div>
-                        <!-- 10 -->
-                        <div class="ai-card">
-                            <span class="icon">📸</span>
-                            <h3>ИИ-распознавание</h3>
-                            <p>Распознай космический объект.</p>
-                            <input class="ai-input" id="aiRecogInput" placeholder="Описание" value="красная планета">
-                            <button class="ai-btn" onclick="aiRecognize()">🔍 Распознать</button>
-                            <div class="ai-output" id="aiRecogOutput">Опиши объект</div>
-                        </div>
+            <div class="extra-section">
+                <h3 style="font-family:var(--font-serif);font-size:24px;font-weight:700;margin:40px 0 16px;">✨ Дополнительные услуги</h3>
+                <div class="extra-grid" id="extraGrid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    КАЛЬКУЛЯТОР
+    ============================================================ -->
+    <section class="section-padding" id="calculator">
+        <div class="container">
+            <div class="section-label">📊 КАЛЬКУЛЯТОР</div>
+            <h2 class="section-title">Стоимость <span>и время</span></h2>
+            <p class="section-desc">Выбери услуги выше, и мы автоматически рассчитаем итоговую стоимость и время процедуры.</p>
+
+            <div class="calculator-wrap">
+                <div class="calc-left">
+                    <h3 style="font-size:20px;font-weight:700;margin-bottom:16px;">📋 Твои услуги</h3>
+                    <div id="selectedServices">
+                        <div class="empty-message">Пока ничего не выбрано.<br>Нажми на услугу выше, чтобы добавить.</div>
                     </div>
                 </div>
+                <div class="calc-right">
+                    <h3 style="font-family:var(--font-serif);font-size:22px;font-weight:700;margin-bottom:16px;">💳 Итог</h3>
+                    <div class="total-price" id="totalPrice">0 <small>грн</small></div>
+                    <div class="total-time" id="totalTime">⏱️ <strong>0</strong> минут</div>
+                    <ul class="selected-list" id="selectedList"></ul>
+                    <button class="btn-book" onclick="bookAppointment()">📅 Записаться на процедуру</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- ===== ВКЛАДКА 2: СТАТИСТИКА ===== -->
-                <div class="tab-content" id="tab2">
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="1247">0</div>
-                            <div class="stat-label">🚀 Запусков</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="89">0</div>
-                            <div class="stat-label">🛰️ Спутников</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="12">0</div>
-                            <div class="stat-label">🌍 Миссий на Марс</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="3200000">0</div>
-                            <div class="stat-label">📏 Км пройдено</div>
-                        </div>
+    <!-- ============================================================
+    О НАС
+    ============================================================ -->
+    <section class="section-padding" id="about" style="background:var(--white);">
+        <div class="container">
+            <div class="about-wrap">
+                <div class="about-text">
+                    <div class="section-label">✦ О НАС</div>
+                    <h2 class="section-title">Маникюр с <span>душой</span></h2>
+                    <p style="color:var(--text-light);font-size:16px;line-height:1.8;">
+                        Меня зовут <strong style="color:var(--primary);">Кира</strong>, и я создаю красивые ногти для девушек,
+                        которые любят себя и хотят выглядеть на 100%. Работаю с любовью к своему делу и к каждой клиентке.
+                    </p>
+                    <p style="color:var(--text-light);font-size:16px;line-height:1.8;">
+                        В моём салоне ты получишь не просто маникюр — ты получишь настроение, уют и уверенность в своей красоте.
+                        Использую только качественные материалы и слежу за всеми трендами.
+                    </p>
+                    <div class="features">
+                        <div class="feat"><span class="icon">💅</span> Качественные материалы</div>
+                        <div class="feat"><span class="icon">✨</span> Индивидуальный подход</div>
+                        <div class="feat"><span class="icon">🧼</span> Стерильность и чистота</div>
+                        <div class="feat"><span class="icon">💖</span> Тёплая атмосфера</div>
                     </div>
                 </div>
-
-                <!-- ===== ВКЛАДКА 3: ПРОФИЛЬ ===== -->
-                <div class="tab-content" id="tab3">
-                    <div class="profile-card" id="profileCard">
-                        <div class="profile-avatar" id="profileAvatar">👨‍🚀</div>
-                        <div class="profile-info">
-                            <h3 id="profileName">Гость</h3>
-                            <p id="profileEmail">guest@space.com</p>
-                            <span class="badge">🌌 Новичок</span>
-                            <div style="margin-top:12px;">
-                                <button class="btn btn-primary" onclick="openModal('registerModal')" id="profileAuthBtn">🚀 Войти</button>
-                                <button class="btn btn-secondary" onclick="logout()" id="profileLogoutBtn" style="display:none;">🚪 Выйти</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ===== ВКЛАДКА 4: МУЗЫКА ===== -->
-                <div class="tab-content" id="tab4">
-                    <div class="music-player">
-                        <div class="track-info">
-                            <h4 id="trackName">🌌 Галактический вальс</h4>
-                            <p id="trackArtist">ИИ-композитор · 3:24</p>
-                        </div>
-                        <div class="progress" id="progressBar">
-                            <div class="fill" id="progressFill"></div>
-                        </div>
-                        <div class="controls">
-                            <button onclick="prevTrack()">⏮</button>
-                            <button onclick="togglePlay()" id="playBtn">▶</button>
-                            <button onclick="nextTrack()">⏭</button>
-                        </div>
-                    </div>
-                    <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
-                        <button class="tab-btn" onclick="addTrack()">➕ Добавить трек</button>
-                        <button class="tab-btn" onclick="removeTrack()">🗑️ Удалить трек</button>
+                <div class="about-image">
+                    <div class="preview">
+                        💖
+                        <span class="label">Кира — твой мастер</span>
                     </div>
                 </div>
             </div>
@@ -1543,149 +1068,80 @@
     </section>
 
     <!-- ============================================================
-    ЧАТ
+    КОНТАКТЫ
     ============================================================ -->
-    <section id="chat" style="background:rgba(255,255,255,0.005);padding:60px 0;">
+    <section class="section-padding" id="contacts">
         <div class="container">
-            <div class="section-label">💬 ОБЩЕНИЕ</div>
-            <h2 class="section-title">Чат с <span class="gradient">ИИ-помощником</span></h2>
-            <p class="section-desc">Задавай любые вопросы — ИИ отвечает как настоящий эксперт.</p>
+            <div class="section-label">📱 КОНТАКТЫ</div>
+            <h2 class="section-title">Свяжись со <span>мной</span></h2>
+            <p class="section-desc">Запишись на процедуру или задай любой вопрос — я всегда на связи.</p>
 
-            <div class="chat-container">
-                <div class="chat-messages" id="chatMessages">
-                    <div class="chat-msg bot">🚀 Привет! Я — ИИ-ассистент космической империи. Спрашивай меня о чём угодно!</div>
-                </div>
-                <div class="chat-input-area">
-                    <input id="chatInput" placeholder="Введите сообщение..." onkeydown="if(event.key==='Enter') sendChatMessage()">
-                    <button onclick="sendChatMessage()">📤 Отправить</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    ИГРА
-    ============================================================ -->
-    <section id="game" style="padding:60px 0;">
-        <div class="container">
-            <div class="section-label">🎮 ИГРА</div>
-            <h2 class="section-title">Космическая <span class="gradient">викторина</span></h2>
-            <p class="section-desc">Соревнуйся с искусственным интеллектом в знаниях о космосе.</p>
-
-            <div class="game-container">
-                <div class="game-question" id="gameQuestion">Нажми "Начать игру", чтобы проверить свои знания!</div>
-                <div class="game-options" id="gameOptions">
-                    <button onclick="startGame()">🚀 Начать игру</button>
-                </div>
-                <div class="game-score" id="gameScore">🏆 Счёт: 0</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    АДМИН-ПАНЕЛЬ
-    ============================================================ -->
-    <section id="admin" style="background:rgba(255,255,255,0.005);padding:60px 0;">
-        <div class="container">
-            <div class="section-label">👑 АДМИН-ПАНЕЛЬ</div>
-            <h2 class="section-title">Управление <span class="gradient">империей</span></h2>
-            <p class="section-desc">Полный контроль над пользователями и контентом.</p>
-
-            <div class="admin-panel" id="adminPanel">
-                <div class="admin-stats">
-                    <div class="admin-stat">
-                        <div class="num" id="adminUsers">0</div>
-                        <div class="label">👥 Пользователей</div>
-                    </div>
-                    <div class="admin-stat">
-                        <div class="num" id="adminOnline">0</div>
-                        <div class="label">🟢 Онлайн</div>
-                    </div>
-                    <div class="admin-stat">
-                        <div class="num" id="adminMessages">0</div>
-                        <div class="label">💬 Сообщений</div>
-                    </div>
-                </div>
-
-                <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
-                    <button class="tab-btn active" onclick="switchAdminTab('users')">👥 Пользователи</button>
-                    <button class="tab-btn" onclick="switchAdminTab('settings')">⚙️ Настройки</button>
-                    <button class="tab-btn" onclick="switchAdminTab('logs')">📜 Логи</button>
-                </div>
-
-                <div id="adminUsersTab">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Пользователь</th>
-                                <th>Email</th>
-                                <th>Статус</th>
-                                <th>Действия</th>
-                            </tr>
-                        </thead>
-                        <tbody id="adminUsersTable">
-                            <tr>
-                                <td>Космонавт</td>
-                                <td>cosmo@space.com</td>
-                                <td><span class="status active">Активен</span></td>
-                                <td class="actions">
-                                    <button onclick="showToast('✅ Космонавт забанен', 'success')">Забанить</button>
-                                    <button class="danger" onclick="showToast('🗑️ Космонавт удалён', 'error')">Удалить</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Звёздный_путник</td>
-                                <td>star@space.com</td>
-                                <td><span class="status active">Активен</span></td>
-                                <td class="actions">
-                                    <button onclick="showToast('✅ Звёздный_путник забанен', 'success')">Забанить</button>
-                                    <button class="danger" onclick="showToast('🗑️ Звёздный_путник удалён', 'error')">Удалить</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div style="margin-top:16px;">
-                        <button class="btn btn-primary" onclick="addUser()">➕ Добавить пользователя</button>
-                    </div>
-                </div>
-
-                <div id="adminSettingsTab" style="display:none;">
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-                        <div>
-                            <label>Название сайта</label>
-                            <input class="ai-input" id="siteName" value="✦ IMPERIUM" style="width:100%;">
-                        </div>
-                        <div>
-                            <label>Тема</label>
-                            <select class="ai-input" id="adminTheme" style="width:100%;" onchange="toggleTheme()">
-                                <option value="dark">🌙 Тёмная</option>
-                                <option value="light">☀️ Светлая</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>Режим обслуживания</label>
-                            <select class="ai-input" id="maintenanceMode" style="width:100%;">
-                                <option value="off">✅ Выключен</option>
-                                <option value="on">🔴 Включён</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>Максимальное число пользователей</label>
-                            <input class="ai-input" id="maxUsers" value="1000" style="width:100%;">
+            <div class="contacts-wrap">
+                <div class="contacts-info">
+                    <div class="contact-item">
+                        <span class="icon">📞</span>
+                        <div class="info">
+                            <strong>Телефон</strong>
+                            <a href="tel:+380661416216">+380 66 141 62 16</a>
                         </div>
                     </div>
-                    <button class="btn btn-primary" style="margin-top:16px;" onclick="saveSettings()">💾 Сохранить настройки</button>
+
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <div class="info">
+                            <strong>Адрес</strong>
+                            <a href="https://www.google.com/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%9F%D0%B0%D0%BD%D1%96%D0%BA%D0%B0%D1%85%D0%B8,+18,+%D0%94%D0%BD%D1%96%D0%BF%D1%80%D0%BE,+%D0%94%D0%BD%D1%96%D0%BF%D1%80%D0%BE%D0%BF%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+49000/@48.4822275,35.045186,17z/data=!4m6!3m5!1s0x40dbe3f7557b7b7b:0x7b7b7b7b7b7b7b7b!8m2!3d48.4821826!4d35.0473607!16s%2Fg%2F11c5k9p8w1" target="_blank">
+                                вулиця Панікахи, 18, Дніпро
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="icon">📷</span>
+                        <div class="info">
+                            <strong>Instagram</strong>
+                            <a href="https://www.instagram.com/kigsssn" target="_blank">@kigsssn</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="icon">💬</span>
+                        <div class="info">
+                            <strong>Telegram</strong>
+                            <a href="https://t.me/kigsssn" target="_blank">@kigsssn</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="icon">✉️</span>
+                        <div class="info">
+                            <strong>Для записи</strong>
+                            <a href="https://t.me/kigsssn" target="_blank">Telegram @kigsssn</a>
+                            или
+                            <a href="viber://chat?number=380661416216">Viber</a>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/kigsssn" target="_blank">📷 Instagram</a>
+                        <a href="https://t.me/kigsssn" target="_blank">💬 Telegram</a>
+                        <a href="tel:+380661416216">📞 Позвонить</a>
+                        <a href="https://www.google.com/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%9F%D0%B0%D0%BD%D1%96%D0%BA%D0%B0%D1%85%D0%B8,+18,+%D0%94%D0%BD%D1%96%D0%BF%D1%80%D0%BE,+%D0%94%D0%BD%D1%96%D0%BF%D1%80%D0%BE%D0%BF%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+49000/@48.4822275,35.045186,17z/data=!4m6!3m5!1s0x40dbe3f7557b7b7b:0x7b7b7b7b7b7b7b7b!8m2!3d48.4821826!4d35.0473607!16s%2Fg%2F11c5k9p8w1" target="_blank">📍 На карте</a>
+                    </div>
                 </div>
 
-                <div id="adminLogsTab" style="display:none;">
-                    <div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:16px;font-family:monospace;font-size:13px;color:var(--text2);max-height:200px;overflow-y:auto;">
-                        <div>📅 [2026-07-27 14:23] Админ вошёл в систему</div>
-                        <div>📅 [2026-07-27 13:15] Пользователь Космонавт зарегистрировался</div>
-                        <div>📅 [2026-07-27 12:45] ИИ-ассистент ответил на 5 вопросов</div>
-                        <div>📅 [2026-07-27 11:30] Включена тёмная тема</div>
-                        <div>📅 [2026-07-27 10:00] Сервер запущен</div>
+                <div>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2644.7352517381177!2d35.045186!3d48.4822275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dbe3f7557b7b7b%3A0x7b7b7b7b7b7b7b7b!2z0LLRg9C70LjRhtGPINCf0LDQvdGW0LrQsNGF0LgsIDE4LCDQlNC90ZbQv9GA0L4sINCR0LDRgNCy0Lg!5e0!3m2!1suk!2sua!4v1700000000000" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
-                    <button class="btn btn-secondary" style="margin-top:12px;" onclick="clearLogs()">🗑️ Очистить логи</button>
                 </div>
             </div>
         </div>
@@ -1694,13 +1150,17 @@
     <!-- ============================================================
     CTA
     ============================================================ -->
-    <section style="padding:40px 0;">
+    <section class="section-padding" style="padding-top:0;">
         <div class="container">
-            <div class="cta-section" style="background:linear-gradient(135deg,rgba(108,92,231,0.08),rgba(0,210,255,0.04));border-radius:var(--radius);padding:60px 40px;text-align:center;border:1px solid rgba(108,92,231,0.06);">
-                <h2 style="font-family:'Orbitron',monospace;font-size:36px;font-weight:900;margin-bottom:16px;">Готов к <span class="gradient">полёту</span>?</h2>
-                <p style="color:var(--text2);font-size:18px;max-width:500px;margin:0 auto 28px;">Присоединяйся к космической империи и стань частью будущего уже сегодня.</p>
-                <a href="#" class="btn btn-primary" onclick="openModal('registerModal')">🚀 Стать частью</a>
-                <a href="#chat" class="btn btn-secondary" style="margin-left:12px;">💬 Чат с ИИ</a>
+            <div class="cta-wrap">
+                <div class="deco">💅</div>
+                <div class="deco">🌸</div>
+                <h2>Готова к красоте?</h2>
+                <p>Запишись на процедуру уже сегодня и получи идеальные ногти.</p>
+                <div>
+                    <a href="https://t.me/kigsssn" target="_blank" class="btn-white">💬 Написать в Telegram</a>
+                    <a href="tel:+380661416216" class="btn-outline-white">📞 Позвонить</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1712,33 +1172,26 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3>✦ IMPERIUM</h3>
-                    <p>Космическая империя нового поколения. Мы объединяем технологии, искусство и исследование космоса.</p>
+                    <h3>💅 KIRA NAILS</h3>
+                    <p>Маникюрный салон в Днепре. Красивые ногти, тёплая атмосфера и индивидуальный подход.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Навигация</h4>
-                    <a href="#home">Главная</a>
-                    <a href="#ai">🤖 ИИ-функции</a>
-                    <a href="#chat">💬 Чат</a>
-                    <a href="#game">🎮 Игра</a>
-                    <a href="#admin">👑 Админ</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Соцсети</h4>
-                    <a href="#">Telegram</a>
-                    <a href="#">YouTube</a>
-                    <a href="#">Twitter</a>
-                    <a href="#">GitHub</a>
+                    <h4>Услуги</h4>
+                    <a href="#services">Покрытие</a>
+                    <a href="#services">Наращивание</a>
+                    <a href="#services">Коррекция</a>
+                    <a href="#services">Дизайн</a>
                 </div>
                 <div class="footer-col">
                     <h4>Контакты</h4>
-                    <a href="#">📧 space@imperium.com</a>
-                    <a href="#">📞 +1 (800) 123-45-67</a>
-                    <a href="#">📍 Космодром</a>
+                    <a href="tel:+380661416216">+380 66 141 62 16</a>
+                    <a href="https://www.instagram.com/kigsssn" target="_blank">Instagram</a>
+                    <a href="https://t.me/kigsssn" target="_blank">Telegram</a>
+                    <a href="https://www.google.com/maps/place/%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%9F%D0%B0%D0%BD%D1%96%D0%BA%D0%B0%D1%85%D0%B8,+18,+%D0%94%D0%BD%D1%96%D0%BF%D1%80%D0%BE,+%D0%94%D0%BD%D1%96%D0%BF%D1%80%D0%BE%D0%BF%D0%B5%D1%82%D1%80%D0%BE%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+49000/@48.4822275,35.045186,17z/data=!4m6!3m5!1s0x40dbe3f7557b7b7b:0x7b7b7b7b7b7b7b7b!8m2!3d48.4821826!4d35.0473607!16s%2Fg%2F11c5k9p8w1" target="_blank">📍 Адрес</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                © 2026 IMPERIUM. Сделано с ❤️ и 🚀. Powered by ИИ.
+                © 2026 KIRA NAILS. Сделано с 💖 и 💅
             </div>
         </div>
     </footer>
@@ -1748,133 +1201,38 @@
     ============================================================ -->
     <script>
         // ============================================================
-        // ПОЛЬЗОВАТЕЛИ И АВТОРИЗАЦИЯ
+        // ДАННЫЕ
         // ============================================================
-        let users = JSON.parse(localStorage.getItem('spaceUsers')) || [];
-        let currentUser = JSON.parse(localStorage.getItem('spaceCurrentUser')) || null;
+        const services = [
+            { id: 'coating', name: 'Однотонное покрытие', price: 550, time: 60, icon: '💖', badge: 'Популярное' },
+            { id: 'extension_3', name: 'Наращивание до 3 мм', price: 700, time: 90, icon: '✨', badge: 'Хит' },
+            { id: 'extension_4', name: 'Наращивание 4-5 мм', price: 750, time: 100, icon: '🌟', badge: 'Средняя длина' },
+            { id: 'extension_6', name: 'Наращивание 6 мм', price: 800, time: 110, icon: '💫', badge: 'Длинные' },
+            { id: 'correction', name: 'Коррекция', price: 600, time: 75, icon: '🔄', badge: 'Скидка' },
+            { id: 'french', name: 'Френч', price: 50, time: 15, icon: '🤍', badge: 'Классика' },
+            { id: 'ombre', name: 'Омбре', price: 70, time: 20, icon: '🌈', badge: 'Градиент' },
+            { id: 'matte', name: 'Матовый топ', price: 30, time: 10, icon: '🌸', badge: 'Бархат' }
+        ];
 
-        function saveUsers() {
-            localStorage.setItem('spaceUsers', JSON.stringify(users));
-        }
-
-        function register() {
-            const username = document.getElementById('regUsername').value.trim();
-            const email = document.getElementById('regEmail').value.trim();
-            const password = document.getElementById('regPassword').value;
-
-            if (!username || !email || !password) {
-                showToast('❌ Заполните все поля!', 'error');
-                return;
-            }
-
-            if (users.find(u => u.username === username)) {
-                showToast('❌ Пользователь с таким именем уже существует!', 'error');
-                return;
-            }
-
-            users.push({ username, email, password, role: users.length === 0 ? 'admin' : 'user', banned: false });
-            saveUsers();
-            closeModal('registerModal');
-            showToast('✅ Регистрация успешна! Войдите в аккаунт.', 'success');
-            openModal('loginModal');
-        }
-
-        function login() {
-            const username = document.getElementById('loginUsername').value.trim();
-            const password = document.getElementById('loginPassword').value;
-
-            const user = users.find(u => u.username === username && u.password === password);
-            if (!user) {
-                showToast('❌ Неверное имя или пароль!', 'error');
-                return;
-            }
-
-            if (user.banned) {
-                showToast('❌ Этот пользователь забанен!', 'error');
-                return;
-            }
-
-            currentUser = user;
-            localStorage.setItem('spaceCurrentUser', JSON.stringify(currentUser));
-            closeModal('loginModal');
-            updateUI();
-            showToast('🚀 Добро пожаловать, ' + user.username + '!', 'success');
-        }
-
-        function logout() {
-            currentUser = null;
-            localStorage.removeItem('spaceCurrentUser');
-            updateUI();
-            showToast('👋 До свидания!', 'info');
-        }
-
-        function updateUI() {
-            const authBtn = document.getElementById('authBtn');
-            const logoutBtn = document.getElementById('logoutBtn');
-            const profileAuthBtn = document.getElementById('profileAuthBtn');
-            const profileLogoutBtn = document.getElementById('profileLogoutBtn');
-            const profileName = document.getElementById('profileName');
-            const profileEmail = document.getElementById('profileEmail');
-            const profileAvatar = document.getElementById('profileAvatar');
-
-            if (currentUser) {
-                authBtn.textContent = '👤 ' + currentUser.username;
-                authBtn.onclick = () => showToast('👤 Вы вошли как ' + currentUser.username, 'info');
-                logoutBtn.style.display = 'inline-block';
-                profileAuthBtn.style.display = 'none';
-                profileLogoutBtn.style.display = 'inline-block';
-                profileName.textContent = currentUser.username;
-                profileEmail.textContent = currentUser.email;
-                profileAvatar.textContent = currentUser.role === 'admin' ? '👑' : '👨‍🚀';
-            } else {
-                authBtn.textContent = '🚀 Войти';
-                authBtn.onclick = () => openModal('registerModal');
-                logoutBtn.style.display = 'none';
-                profileAuthBtn.style.display = 'inline-block';
-                profileLogoutBtn.style.display = 'none';
-                profileName.textContent = 'Гость';
-                profileEmail.textContent = 'guest@space.com';
-                profileAvatar.textContent = '👨‍🚀';
-            }
-
-            // Обновляем админ-панель
-            const adminUsers = document.getElementById('adminUsers');
-            if (adminUsers) adminUsers.textContent = users.length;
-        }
+        const extras = [
+            { id: 'rub', name: 'Втирка', price: 60 },
+            { id: 'crystals', name: 'Стразы', price: 10 },
+            { id: 'stickers', name: 'Наклейки', price: 30 },
+            { id: 'drawing', name: 'Рисунок', price: 40 },
+            { id: 'repair', name: 'Починка ногтя', price: 30 },
+            { id: 'spa', name: 'SPA уход', price: 150 },
+            { id: 'paraffin', name: 'Парафинотерапия', price: 200 },
+            { id: 'base', name: 'Укрепление базой', price: 100 },
+            { id: 'gel', name: 'Укрепление гелем', price: 150 },
+            { id: 'removal', name: 'Снятие гель-лака', price: 100 },
+            { id: 'cat_eye', name: 'Дизайн "кошачий глаз"', price: 80 }
+        ];
 
         // ============================================================
-        // МОДАЛЬНЫЕ ОКНА
+        // СОСТОЯНИЕ
         // ============================================================
-        function openModal(id) {
-            document.getElementById(id).classList.add('open');
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('open');
-        }
-
-        // Закрытие по клику вне модалки
-        document.querySelectorAll('.modal-overlay').forEach(el => {
-            el.addEventListener('click', function(e) {
-                if (e.target === this) this.classList.remove('open');
-            });
-        });
-
-        // ============================================================
-        // ТОСТ-УВЕДОМЛЕНИЯ
-        // ============================================================
-        function showToast(message, type = 'info') {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = 'toast ' + type;
-            toast.textContent = message;
-            container.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateX(40px)';
-                setTimeout(() => toast.remove(), 400);
-            }, 3000);
-        }
+        let selectedServices = [];
+        let selectedExtras = {};
 
         // ============================================================
         // НАВИГАЦИЯ
@@ -1893,493 +1251,222 @@
         });
 
         // ============================================================
-        // ВКЛАДКИ (TABS)
+        // РЕНДЕРИНГ
         // ============================================================
-        document.querySelectorAll('.tab-btn[data-tab]').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const tabId = this.dataset.tab;
-                document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-                document.querySelectorAll('.tab-btn[data-tab]').forEach(el => el.classList.remove('active'));
-                document.getElementById(tabId).classList.add('active');
-                this.classList.add('active');
+        function renderServices() {
+            const grid = document.getElementById('servicesGrid');
+            grid.innerHTML = '';
+            services.forEach(s => {
+                const isSelected = selectedServices.some(sel => sel.id === s.id);
+                const card = document.createElement('div');
+                card.className = 'service-card' + (isSelected ? ' selected' : '');
+                card.dataset.id = s.id;
+                card.innerHTML = `
+                        <span class="icon">${s.icon}</span>
+                        <div class="name">${s.name}</div>
+                        <div class="price">${s.price} <small>грн</small></div>
+                        <div class="time">⏱️ ${s.time} мин</div>
+                        ${s.badge ? `<span class="badge">${s.badge}</span>` : ''}
+                        <div class="check">${isSelected ? '✓' : ''}</div>
+                    `;
+                card.addEventListener('click', () => toggleService(s.id));
+                grid.appendChild(card);
+            });
+        }
+
+        function renderExtras() {
+            const grid = document.getElementById('extraGrid');
+            grid.innerHTML = '';
+            extras.forEach(e => {
+                const count = selectedExtras[e.id] ? selectedExtras[e.id].count : 0;
+                const isSelected = count > 0;
+                const div = document.createElement('div');
+                div.className = 'extra-item' + (isSelected ? ' selected' : '');
+                div.innerHTML = `
+                        <span class="extra-icon">✨</span>
+                        <div class="extra-info">
+                            <div class="extra-name">${e.name}</div>
+                            <div class="extra-price">${e.price} грн</div>
+                        </div>
+                        <div class="extra-controls">
+                            <button onclick="event.stopPropagation();adjustExtra('${e.id}', -1)">−</button>
+                            <span class="count">${count}</span>
+                            <button onclick="event.stopPropagation();adjustExtra('${e.id}', 1)">+</button>
+                        </div>
+                    `;
+                div.addEventListener('click', () => toggleExtra(e.id));
+                grid.appendChild(div);
+            });
+        }
+
+        // ============================================================
+        // ЛОГИКА
+        // ============================================================
+        function toggleService(id) {
+            const idx = selectedServices.findIndex(s => s.id === id);
+            if (idx === -1) {
+                const s = services.find(x => x.id === id);
+                if (s) { selectedServices.push({ ...s });
+                    showToast(`✅ Добавлено: ${s.name}`, 'success'); }
+            } else {
+                const name = selectedServices[idx].name;
+                selectedServices.splice(idx, 1);
+                showToast(`❌ Удалено: ${name}`, 'error');
+            }
+            updateUI();
+        }
+
+        function toggleExtra(id) {
+            if (selectedExtras[id] && selectedExtras[id].count > 0) {
+                selectedExtras[id].count = 0;
+                delete selectedExtras[id];
+                showToast(`❌ Удалено: ${extras.find(e => e.id === id).name}`, 'error');
+            } else {
+                const e = extras.find(x => x.id === id);
+                selectedExtras[id] = { ...e, count: 1 };
+                showToast(`✅ Добавлено: ${e.name}`, 'success');
+            }
+            updateUI();
+        }
+
+        function adjustExtra(id, delta) {
+            if (!selectedExtras[id]) {
+                const e = extras.find(x => x.id === id);
+                selectedExtras[id] = { ...e, count: 0 };
+            }
+            selectedExtras[id].count = Math.max(0, selectedExtras[id].count + delta);
+            if (selectedExtras[id].count === 0) delete selectedExtras[id];
+            updateUI();
+        }
+
+        // ============================================================
+        // ОБНОВЛЕНИЕ UI
+        // ============================================================
+        function updateUI() {
+            document.querySelectorAll('.service-card').forEach(card => {
+                const id = card.dataset.id;
+                const isSelected = selectedServices.some(s => s.id === id);
+                card.classList.toggle('selected', isSelected);
+                const check = card.querySelector('.check');
+                if (check) check.textContent = isSelected ? '✓' : '';
+            });
+
+            renderExtras();
+
+            const container = document.getElementById('selectedServices');
+            const list = document.getElementById('selectedList');
+
+            if (selectedServices.length === 0 && Object.keys(selectedExtras).length === 0) {
+                container.innerHTML =
+                    `<div class="empty-message">Пока ничего не выбрано.<br>Нажми на услугу выше, чтобы добавить.</div>`;
+                list.innerHTML = '';
+            } else {
+                let html = '';
+                let totalPrice = 0,
+                    totalTime = 0;
+
+                selectedServices.forEach(s => {
+                    totalPrice += s.price;
+                    totalTime += s.time;
+                    html += `
+                            <li>
+                                <span>${s.icon} ${s.name}</span>
+                                <span>${s.price} грн</span>
+                            </li>
+                        `;
+                });
+
+                Object.values(selectedExtras).forEach(e => {
+                    const p = e.price * e.count;
+                    totalPrice += p;
+                    totalTime += 5 * e.count;
+                    html += `
+                            <li>
+                                <span>✨ ${e.name} ×${e.count}</span>
+                                <span>${p} грн</span>
+                            </li>
+                        `;
+                });
+
+                container.innerHTML = `<ul class="selected-list">${html}</ul>`;
+                list.innerHTML = html;
+
+                document.getElementById('totalPrice').innerHTML = `${totalPrice} <small>грн</small>`;
+                document.getElementById('totalTime').innerHTML = `⏱️ <strong>${totalTime}</strong> минут`;
+            }
+        }
+
+        // ============================================================
+        // ЗАПИСЬ
+        // ============================================================
+        function bookAppointment() {
+            if (selectedServices.length === 0 && Object.keys(selectedExtras).length === 0) {
+                showToast('❌ Выберите хотя бы одну услугу!', 'error');
+                return;
+            }
+
+            let text = '💅 Запись на маникюр!\n\n📋 Услуги:\n';
+            selectedServices.forEach(s => { text += `  • ${s.name} — ${s.price} грн\n`; });
+            Object.values(selectedExtras).forEach(e => { text += `  • ${e.name} ×${e.count} — ${e.price * e.count} грн\n`; });
+            text += `\n💳 Итого: ${document.getElementById('totalPrice').textContent}`;
+            text += `\n⏱️ Время: ${document.getElementById('totalTime').textContent}`;
+            text += '\n\n📞 Контакт: +380 66 141 62 16';
+            text += '\n📍 Адрес: вулиця Панікахи, 18, Дніпро';
+            text += '\n💬 Telegram: @kigsssn';
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('✅ Текст скопирован! Отправь его мастеру в Telegram @kigsssn', 'success');
+            }).catch(() => {
+                showToast('📋 Скопируй текст вручную и отправь мастеру.', 'info');
+            });
+
+            setTimeout(() => {
+                document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' });
+            }, 500);
+        }
+
+        // ============================================================
+        // ТОСТЫ
+        // ============================================================
+        function showToast(msg, type = 'info') {
+            const c = document.getElementById('toastContainer');
+            const t = document.createElement('div');
+            t.className = 'toast ' + type;
+            t.textContent = msg;
+            c.appendChild(t);
+            setTimeout(() => { t.style.opacity = '0';
+                t.style.transform = 'translateY(20px)';
+                setTimeout(() => t.remove(), 400); }, 3000);
+        }
+
+        // ============================================================
+        // ПЛАВНЫЙ СКРОЛЛ
+        // ============================================================
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
             });
         });
 
         // ============================================================
-        // АДМИН-ПАНЕЛЬ
+        // ЭФФЕКТ СКРОЛЛА
         // ============================================================
-        function switchAdminTab(tab) {
-            document.querySelectorAll('#adminPanel .tab-btn').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('#adminPanel > div:not(.admin-stats):not(:first-child)').forEach(el => el.style
-                .display = 'none');
-
-            if (tab === 'users') {
-                document.getElementById('adminUsersTab').style.display = 'block';
-                document.querySelector('#adminPanel .tab-btn:first-child').classList.add('active');
-            } else if (tab === 'settings') {
-                document.getElementById('adminSettingsTab').style.display = 'block';
-                document.querySelector('#adminPanel .tab-btn:nth-child(2)').classList.add('active');
-            } else if (tab === 'logs') {
-                document.getElementById('adminLogsTab').style.display = 'block';
-                document.querySelector('#adminPanel .tab-btn:nth-child(3)').classList.add('active');
-            }
-        }
-
-        function addUser() {
-            const name = prompt('Введите имя пользователя:');
-            if (name) {
-                const email = prompt('Введите email:');
-                if (email) {
-                    users.push({ username: name, email, password: '123456', role: 'user', banned: false });
-                    saveUsers();
-                    updateUI();
-                    showToast('✅ Пользователь ' + name + ' добавлен!', 'success');
-                }
-            }
-        }
-
-        function saveSettings() {
-            showToast('✅ Настройки сохранены!', 'success');
-        }
-
-        function clearLogs() {
-            showToast('🗑️ Логи очищены!', 'info');
-        }
-
-        // ============================================================
-        // ТЕМА
-        // ============================================================
-        let currentTheme = localStorage.getItem('spaceTheme') || 'dark';
-
-        function toggleTheme() {
-            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', currentTheme);
-            localStorage.setItem('spaceTheme', currentTheme);
-            document.getElementById('themeBtn').textContent = currentTheme === 'dark' ? '🌙' : '☀️';
-            document.getElementById('adminTheme').value = currentTheme;
-        }
-
-        // Применяем тему при загрузке
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        document.getElementById('themeBtn').textContent = currentTheme === 'dark' ? '🌙' : '☀️';
-
-        // ============================================================
-        // ИИ-ФУНКЦИИ (10 штук)
-        // ============================================================
-
-        // === 1. ИИ-ЧАТ ===
-        function aiChat() {
-            const output = document.getElementById('aiChatOutput');
-            const msgs = [
-                "🧠 Я думаю, что будущее космоса — это коллаборация людей и ИИ.",
-                "🚀 Космический туризм станет реальностью для всех к 2035 году.",
-                "🌍 Самая большая загадка — тёмная материя. Мы её почти нашли.",
-                "🛸 У нас есть доказательства существования воды на Марсе.",
-                "💡 Технология квантовых двигателей — это следующий прорыв.",
-                "🌟 Мы не одни во Вселенной. ИИ анализирует сигналы."
-            ];
-            output.textContent = msgs[Math.floor(Math.random() * msgs.length)];
-            output.className = 'ai-output active';
-            shake(output);
-        }
-
-        // === 2. КОСМИЧЕСКОЕ ИМЯ ===
-        function aiName() {
-            const names = [
-                'Странник Галактик', 'Повелитель Туманов', 'Звёздный Ветер',
-                'Лунный Страж', 'Солярис', 'Архитектор Вселенной',
-                'Ночной Ястреб', 'Астероидный Король', 'Пульсарный Маг',
-                'Титан Пространства', 'Эфирный Странник', 'Космический Шаман'
-            ];
-            const output = document.getElementById('aiNameOutput');
-            output.textContent = '🌟 ' + names[Math.floor(Math.random() * names.length)];
-            output.className = 'ai-output active';
-            shake(output);
-        }
-
-        // === 3. АСТРОЛОГ ===
-        function aiAstro() {
-            const predictions = [
-                '⭐ Ты откроешь новую звёздную систему в ближайшие 10 лет.',
-                '🌙 Твоя судьба связана с красной планетой — Марс ждёт тебя.',
-                '☀️ Энергия Солнца наполнит тебя вдохновением для великих дел.',
-                '🌌 Вселенная готовит тебе встречу с важным человеком.',
-                '🪐 Кольца Сатурна принесут тебе удачу в начинаниях.',
-                '💫 Ты станешь частью первого контакта с внеземной цивилизацией.'
-            ];
-            const output = document.getElementById('aiAstroOutput');
-            output.textContent = '🔮 ' + predictions[Math.floor(Math.random() * predictions.length)];
-            output.className = 'ai-output active';
-            shake(output);
-        }
-
-        // === 4. ИИ-ХУДОЖНИК ===
-        function aiArt() {
-            const input = document.getElementById('aiArtInput').value || 'золотая галактика с кольцами';
-            const output = document.getElementById('aiArtOutput');
-            const styles = ['акварель', 'киберпанк', 'импрессионизм', 'реализм', 'ар-деко', 'фэнтези'];
-            const style = styles[Math.floor(Math.random() * styles.length)];
-            output.textContent = '🖼️ ИИ создал пейзаж: "' + input + '" в стиле ' + style + ' (симуляция)';
-            output.className = 'ai-output active';
-            shake(output);
-        }
-
-        // === 5. ИИ-МУЗЫКА ===
-        function aiMusic() {
-            const tracks = [
-                '🎵 Галактическая симфония #7',
-                '🎵 Космическое эхо 2046',
-                '🎵 Вальс туманностей',
-                '🎵 Ритм пульсара',
-                '🎵 Мелодия чёрной дыры',
-                '🎵 Звуки далёких звёзд'
-            ];
-            const output = document.getElementById('aiMusicOutput');
-            output.textContent = '🎶 ' + tracks[Math.floor(Math.random() * tracks.length)] + ' — генерируется...';
-            output.className = 'ai-output active';
-            setTimeout(() => {
-                output.textContent = '🎶 ' + tracks[Math.floor(Math.random() * tracks.length)] + ' (готово!)';
-            }, 800);
-            shake(output);
-        }
-
-        // === 6. ГОЛОСОВОЙ ИИ ===
-        function aiVoice() {
-            const output = document.getElementById('aiVoiceOutput');
-            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                output.textContent = '❌ Твой браузер не поддерживает голосовой ввод. Используй Chrome или Edge.';
-                output.className = 'ai-output active';
-                return;
-            }
-
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            const recognition = new SpeechRecognition();
-            recognition.lang = 'ru-RU';
-            recognition.start();
-
-            output.textContent = '🎤 Слушаю... Говори!';
-            output.className = 'ai-output active';
-
-            recognition.onresult = function(event) {
-                const text = event.results[0][0].transcript;
-                output.textContent = '🗣️ Ты сказал: "' + text + '" — ИИ тебя понял! 🚀';
-                output.className = 'ai-output active';
-                shake(output);
-            };
-
-            recognition.onerror = function() {
-                output.textContent = '❌ Не удалось распознать голос. Попробуй ещё раз.';
-                output.className = 'ai-output active';
-            };
-        }
-
-        // === 7. ИИ-РЕКОМЕНДАЦИИ ===
-        function aiRecommend() {
-            const input = document.getElementById('aiRecInput').value || 'астрономия, технологии';
-            const missions = [
-                '🚀 Миссия на Europa: исследование подлёдного океана',
-                '🛰️ Запуск телескопа для поиска экзопланет',
-                '🌍 Колонизация Марса — участие в первом поселении',
-                '☀️ Солнечный зонд для изучения короны',
-                '🪐 Исследование колец Сатурна',
-                '💎 Добыча редких металлов на астероидах'
-            ];
-            const output = document.getElementById('aiRecOutput');
-            const mission = missions[Math.floor(Math.random() * missions.length)];
-            output.textContent = '📡 На основе твоих интересов: "' + input + '" → рекомендую: ' + mission;
-            output.className = 'ai-output active';
-            shake(output);
-        }
-
-        // === 8. ИИ-АНАЛИТИК ===
-        function aiAnalyze() {
-            const output = document.getElementById('aiAnalyzeOutput');
-            const data = [
-                '📊 Обнаружена аномалия в спектре звезды Kepler-452b.',
-                '📈 Уровень солнечной активности вырос на 12% за последний месяц.',
-                '🔭 Телескоп James Webb зафиксировал новый тип галактики.',
-                '📉 Снижение плотности космического излучения на 3%',
-                '📡 Получен радиосигнал из созвездия Лиры. Анализ продолжается.'
-            ];
-            output.textContent = data[Math.floor(Math.random() * data.length)];
-            output.className = 'ai-output active';
-            shake(output);
-        }
-
-        // === 9. ИИ-ВИКТОРИНА ===
-        let quizIndex = 0;
-        let quizScore = 0;
-        const quizQuestions = [
-            { q: 'Сколько планет в Солнечной системе?', a: ['7', '8', '9', '10'], correct: 1 },
-            { q: 'Самая большая планета?', a: ['Сатурн', 'Юпитер', 'Нептун', 'Земля'], correct: 1 },
-            { q: 'Где находится Великое Красное Пятно?', a: ['На Земле', 'На Венере', 'На Юпитере', 'На Сатурне'],
-                correct: 2 },
-            { q: 'Кто был первым человеком в космосе?', a: ['Армстронг', 'Гагарин', 'Леонов', 'Терешкова'], correct: 1 },
-            { q: 'Какая планета вращается "лёжа на боку"?', a: ['Марс', 'Юпитер', 'Уран', 'Нептун'], correct: 2 }
-        ];
-
-        function aiQuiz() {
-            const output = document.getElementById('aiQuizOutput');
-            output.textContent = '🎮 Викторина началась! Смотри в блок игры ниже.';
-            output.className = 'ai-output active';
-            document.getElementById('gameOptions').innerHTML = '<button onclick="startGame()">🚀 Начать игру</button>';
-            document.getElementById('gameQuestion').textContent = 'Нажми "Начать игру", чтобы проверить свои знания!';
-            document.getElementById('gameScore').textContent = '🏆 Счёт: 0';
-            shake(output);
-        }
-
-        // === ИГРА ===
-        function startGame() {
-            quizIndex = 0;
-            quizScore = 0;
-            showQuestion();
-        }
-
-        function showQuestion() {
-            if (quizIndex >= quizQuestions.length) {
-                document.getElementById('gameQuestion').textContent = '🎉 Игра окончена! Твой счёт: ' + quizScore + '/' +
-                    quizQuestions.length;
-                document.getElementById('gameOptions').innerHTML = '<button onclick="startGame()">🔄 Играть снова</button>';
-                return;
-            }
-
-            const q = quizQuestions[quizIndex];
-            document.getElementById('gameQuestion').textContent = (quizIndex + 1) + '. ' + q.q;
-            const container = document.getElementById('gameOptions');
-            container.innerHTML = '';
-            q.a.forEach((text, idx) => {
-                const btn = document.createElement('button');
-                btn.textContent = text;
-                btn.onclick = () => gameAnswer(idx);
-                container.appendChild(btn);
-            });
-            document.getElementById('gameScore').textContent = '🏆 Счёт: ' + quizScore;
-        }
-
-        function gameAnswer(idx) {
-            const q = quizQuestions[quizIndex];
-            const btns = document.querySelectorAll('#gameOptions button');
-
-            btns.forEach((b, i) => {
-                b.disabled = true;
-                if (i === q.correct) b.className = 'correct';
-                else if (i === idx && idx !== q.correct) b.className = 'wrong';
-            });
-
-            if (idx === q.correct) {
-                quizScore++;
-                document.getElementById('gameScore').textContent = '🏆 Счёт: ' + quizScore;
-                showToast('✅ Правильно! +1 очко', 'success');
-            } else {
-                showToast('❌ Неправильно! Правильный ответ: ' + q.a[q.correct], 'error');
-            }
-
-            setTimeout(() => {
-                quizIndex++;
-                btns.forEach(b => { b.disabled = false;
-                    b.className = ''; });
-                showQuestion();
-            }, 1200);
-        }
-
-        // === 10. ИИ-РАСПОЗНАВАНИЕ ===
-        function aiRecognize() {
-            const input = document.getElementById('aiRecogInput').value || 'красная планета';
-            const objects = {
-                'красная планета': 'Марс',
-                'большое красное пятно': 'Юпитер',
-                'кольца': 'Сатурн',
-                'туманность': 'Туманность Ориона',
-                'черная дыра': 'Стрелец А*',
-                'звезда': 'Проксима Центавра',
-                'галактика': 'Галактика Андромеды',
-                'комета': 'Комета Галлея',
-                'астероид': 'Пояс астероидов',
-                'спутник': 'Луна'
-            };
-            const output = document.getElementById('aiRecogOutput');
-            let result = '🔍 Не удалось распознать объект.';
-            for (const [key, value] of Object.entries(objects)) {
-                if (input.toLowerCase().includes(key)) {
-                    result = '🔍 Распознано: ' + value + ' (вероятность 97%)';
-                    break;
-                }
-            }
-            output.textContent = result;
-            output.className = 'ai-output active';
-            shake(output);
-        }
-
-        // ============================================================
-        // ЧАТ
-        // ============================================================
-        function sendChatMessage() {
-            const input = document.getElementById('chatInput');
-            const text = input.value.trim();
-            if (!text) return;
-
-            const container = document.getElementById('chatMessages');
-            const userMsg = document.createElement('div');
-            userMsg.className = 'chat-msg user';
-            userMsg.textContent = text;
-            container.appendChild(userMsg);
-
-            input.value = '';
-            container.scrollTop = container.scrollHeight;
-
-            setTimeout(() => {
-                const botMsg = document.createElement('div');
-                botMsg.className = 'chat-msg bot';
-                const responses = [
-                    '🧠 Отличный вопрос! Я думаю, что в этом направлении нас ждут большие открытия.',
-                    '🚀 Спасибо за вопрос! Давай поразмышляем об этом вместе.',
-                    '🌍 Я анализирую данные... Похоже, что ты прав.',
-                    '💡 Интересная мысль! Я бы сказал, что это связано с квантовой физикой.',
-                    '🌟 Ты задаёшь правильные вопросы. Именно так рождаются великие идеи.',
-                    '🛸 Это сложный вопрос. Но я уверен, что у нас есть все шансы найти ответ.',
-                    '☀️ Я думаю, что ответ лежит в области астрофизики и новых технологий.'
-                ];
-                botMsg.textContent = responses[Math.floor(Math.random() * responses.length)];
-                container.appendChild(botMsg);
-                container.scrollTop = container.scrollHeight;
-            }, 600);
-        }
-
-        // ============================================================
-        // МУЗЫКА
-        // ============================================================
-        let tracks = [
-            { name: '🌌 Галактический вальс', artist: 'ИИ-композитор · 3:24' },
-            { name: '🎵 Космическое эхо', artist: 'ИИ-композитор · 4:12' },
-            { name: '🌠 Звёздный поток', artist: 'ИИ-композитор · 2:58' },
-            { name: '🔭 Телескоп', artist: 'ИИ-композитор · 3:45' },
-        ];
-        let currentTrack = 0;
-        let isPlaying = false;
-
-        function updateTrack() {
-            document.getElementById('trackName').textContent = tracks[currentTrack].name;
-            document.getElementById('trackArtist').textContent = tracks[currentTrack].artist;
-        }
-
-        function togglePlay() {
-            isPlaying = !isPlaying;
-            const btn = document.getElementById('playBtn');
-            btn.textContent = isPlaying ? '⏸' : '▶';
-            if (isPlaying) {
-                let progress = 0;
-                const interval = setInterval(() => {
-                    progress += 2;
-                    if (progress > 100 || !isPlaying) {
-                        clearInterval(interval);
-                        if (progress > 100) {
-                            progress = 0;
-                            nextTrack();
-                        }
-                        return;
-                    }
-                    document.getElementById('progressFill').style.width = progress + '%';
-                }, 200);
-                window._progressInterval = interval;
-            } else {
-                clearInterval(window._progressInterval);
-            }
-        }
-
-        function nextTrack() {
-            currentTrack = (currentTrack + 1) % tracks.length;
-            updateTrack();
-            document.getElementById('progressFill').style.width = '0%';
-            if (isPlaying) togglePlay();
-        }
-
-        function prevTrack() {
-            currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
-            updateTrack();
-            document.getElementById('progressFill').style.width = '0%';
-            if (isPlaying) togglePlay();
-        }
-
-        function addTrack() {
-            const name = prompt('Название трека:');
-            if (name) {
-                const artist = prompt('Исполнитель:');
-                tracks.push({ name, artist: artist || 'ИИ-композитор' });
-                showToast('✅ Трек добавлен!', 'success');
-            }
-        }
-
-        function removeTrack() {
-            if (tracks.length <= 1) {
-                showToast('❌ Нельзя удалить последний трек!', 'error');
-                return;
-            }
-            tracks.splice(currentTrack, 1);
-            if (currentTrack >= tracks.length) currentTrack = tracks.length - 1;
-            updateTrack();
-            showToast('🗑️ Трек удалён!', 'info');
-        }
-
-        // ============================================================
-        // СТАТИСТИКА (АНИМАЦИЯ)
-        // ============================================================
-        const statNumbers = document.querySelectorAll('.stat-number');
-
-        function animateStats(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    const target = parseInt(el.dataset.target);
-                    let current = 0;
-                    const increment = Math.ceil(target / 80);
-
-                    const update = () => {
-                        current += increment;
-                        if (current >= target) { current = target; }
-                        el.textContent = current.toLocaleString();
-                        if (current < target) requestAnimationFrame(update);
-                    };
-                    update();
-                }
-            });
-        }
-
-        const statsObserver = new IntersectionObserver(animateStats, { threshold: 0.3 });
-        statNumbers.forEach(el => statsObserver.observe(el));
-
-        // ============================================================
-        // ЭФФЕКТ ВСТРЯСКИ
-        // ============================================================
-        function shake(el) {
-            el.style.transition = 'transform 0.1s ease';
-            let count = 0;
-            const interval = setInterval(() => {
-                el.style.transform = count % 2 === 0 ? 'translateX(4px)' : 'translateX(-4px)';
-                count++;
-                if (count > 6) {
-                    clearInterval(interval);
-                    el.style.transform = 'translateX(0)';
-                }
-            }, 50);
-        }
-
-        // ============================================================
-        // СКРОЛЛ К ВЕРХУ
-        // ============================================================
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
         // ============================================================
         // ИНИЦИАЛИЗАЦИЯ
         // ============================================================
+        renderServices();
+        renderExtras();
         updateUI();
 
-        console.log('🌌 Космическая Империя загружена!');
-        console.log('👥 Пользователей: ' + users.length);
-        console.log('🤖 ИИ-функций: ' + document.querySelectorAll('.ai-card').length);
-        console.log('🎵 Треков: ' + tracks.length);
-        console.log('🚀 Добро пожаловать в будущее!');
+        console.log('💅 KIRA NAILS — сайт загружен!');
+        console.log('📋 Услуг: ' + services.length + ', ✨ Дополнительных: ' + extras.length);
     </script>
 
 </body>
